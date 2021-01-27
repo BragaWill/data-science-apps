@@ -1,22 +1,13 @@
-######################
-# Import libraries
-######################
-
 import pandas as pd
 import streamlit as st
 import altair as alt
 from PIL import Image
-
-######################
-# Page Title
-######################
 
 st.title('Coposição de Nucleotideos do DNA')
 
 image = Image.open('images/dna-logo.png')
 
 st.image(image, use_column_width=True)
-
 
 ######################
 # Input Text Box

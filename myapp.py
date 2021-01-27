@@ -3,23 +3,24 @@ import streamlit as st
 import pandas as pd
 
 st.write("""
-	# Simple Stock Price App !
+	# Aplicativo simples de preço de ações
 
-	Shown are the stock closing **price** and ***volume*** of Google!
 
-	| Tables        | Are           | Cool  |
-	| ------------- |:-------------:| -----:|
-	| col 3 is      | right-aligned | $1600 |
-	| col 2 is      | centered      |   $12 |
-	| zebra stripes | are neat      |    $1 |
-
+	Shown are the stock **closing price** and ***volume*** of Google (GOOGL)
+	
 	""")
 
-tickerSymbol = 'GOOGL'
+tickerSymbol = 'GOOG'
 
 tickerData = yf.Ticker(tickerSymbol)
 
-tickerDf = tickerData.history(period='id', start='2010-5-31', end='2020-5-31')
+tickerDf = tickerData.history(period='id', start='2011-1-31', end='2021-1-31')
+
+
+# def select_org(org):
+# 	tickerSymbol = str(org)
+#	tickerData = yf.Ticker(tickerSymbol)
+#	tickerDf = tickerData.history(period='id', start='2011-1-31', end='2021-1-31')
 
 st.line_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)
