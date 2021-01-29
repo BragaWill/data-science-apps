@@ -13,6 +13,7 @@ import time
 ## Page expands to full width
 st.set_page_config(layout="wide")
 #---------------------------------#
+
 # Title
 
 image = Image.open('images/crypto-logo.jpg')

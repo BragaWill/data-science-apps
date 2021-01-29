@@ -2,25 +2,26 @@ import yfinance as yf
 import streamlit as st
 import pandas as pd
 
+from datetime import date
+
+tday = date.today().isoformat()
+
 st.write("""
-	# Aplicativo simples de preço de ações
+	# Aplicativo Simples de Preço de Ações
 
+	Shown are the stock **closing price** and ***volume*** of AAPL (Apple), AMZN (Amazon), GOOGL/GOOG (Google) e MSFT (Microsoft).
 
-	Shown are the stock **closing price** and ***volume*** of Google (GOOGL)
+	 Period: The time period was set from 1/1/2016 until the date of access to the App. 
 	
 	""")
 
-tickerSymbol = 'GOOG'
+# Tickers
+tickerSymbol = 'GOOGL GOOG AMZN MSFT AAPL'
 
-tickerData = yf.Ticker(tickerSymbol)
+tickerData = yf.Tickers(tickerSymbol)
 
-tickerDf = tickerData.history(period='id', start='2011-1-31', end='2021-1-31')
+tickerDf = tickerData.history(period='id', start='2016-1-01', end=tday)
 
-
-# def select_org(org):
-# 	tickerSymbol = str(org)
-#	tickerData = yf.Ticker(tickerSymbol)
-#	tickerDf = tickerData.history(period='id', start='2011-1-31', end='2021-1-31')
 
 st.line_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)

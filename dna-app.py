@@ -9,28 +9,22 @@ image = Image.open('images/dna-logo.png')
 
 st.image(image, use_column_width=True)
 
-######################
-# Input Text Box
-######################
+###########################
+# Input Text Box - Sidebar#
+###########################
 
-#st.sidebar.header('Enter DNA sequence')
-st.header('Informe a sequencia de DNA:')
+st.sidebar.header('Enter DNA sequence')
 
-sequence_input = ">DNA Query 2\nGAACACGTGGAGGCAAACAGGAAGGTGAAGAAGAACTTATCCTATCAGGACGGAAGGTCCTGTGCTCGGG\nATCTTCCAGACGTCGCGACTCTAAATTGCCCCCTCTGAGGTCAAGGAACACAAGATGGTTTTGGAAATGC\nTGAACCCGATACATTATAACATCACCAGCATCGTGCCTGAAGCCATGCCTGCTGCCACCATGCCAGTCCT"
+sequence_input = 'GAACACGTGGAGGCAAACAGGAAGGTGAAGAAGAACTTATCCTATCAGGACGGAAGGTCCTGTGCTCGGGATCTTCCAGACGTCGCGACTCTAAATTGAACCCGATACATTATAACATCACCAGCATCGTGCCTGAAGCCATGCCTGCTGCCACCATGCCAGTCCTTGCCCCCTCTGAGGTCAAGGAACACAAGATGGTTTTGGAAATGC'
+sequence = st.sidebar.text_area("Enter the sequence below:", sequence_input, height=250)
 
-#sequence = st.sidebar.text_area("Sequence input", sequence_input, height=250)
-sequence = st.text_area("Sequence input", sequence_input, height=250)
-sequence = sequence.splitlines()
-sequence = sequence[1:] # Skips the sequence name (first line)
-sequence = ''.join(sequence) # Concatenates list to string
+def text_cl(sequence):
+    sequence = sequence.upper()
+    sequence = sequence.splitlines() # Retirando quebra de linha
+    sequence = ''.join(sequence) # Retirando espaços
+    return sequence
 
-st.write("""
-***
-""")
-
-## Prints the input DNA sequence
-st.header('INPUT (DNA Query)')
-sequence
+sequence = text_cl(sequence)
 
 ## DNA nucleotide count
 st.header('OUTPUT (DNA Nucleotide Count)')

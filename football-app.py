@@ -14,6 +14,7 @@ This app performs simple webscraping of NFL Football player stats data (focusing
 * **Data source:** [pro-football-reference.com](https://www.pro-football-reference.com/).
 """)
 
+# Review
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.sidebar.header('User Input Features')
